@@ -31,7 +31,7 @@ const WorkoutDetails = ({ workout }) => {
         {formatDistanceToNow(new Date(workout.createdAt), { addSuffix: true })}
       </p>
       <span className="material-symbols-outlined" onClick={handleClick}>
-        Delete
+        delete
       </span>
     </div>
   );
