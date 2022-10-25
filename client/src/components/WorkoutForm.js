@@ -36,8 +36,6 @@ const WorkoutForm = () => {
       dispatch({ type: 'CREATE_WORKOUT', payload: json });
     }
   };
-
-  console.log({ emptyFields });
   return (
     <form className="create" onSubmit={handleSubmit}>
       <h3>Add a new workout</h3>
