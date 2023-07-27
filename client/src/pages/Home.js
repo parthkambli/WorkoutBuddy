@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useEffect } from "react";
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-import WorkoutDetails from '../components/WorkoutDetails';
-import WorkoutForm from '../components/WorkoutForm';
+import WorkoutDetails from "../components/WorkoutDetails";
+import WorkoutForm from "../components/WorkoutForm";
 
 const Home = () => {
   const { workouts, dispatch } = useWorkoutsContext();
@@ -11,15 +11,18 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkout = async () => {
-      const response = await fetch('/api/workouts', {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      });
+      const response = await fetch(
+        "https://workoutbuddy-not2.onrender.com/api/workouts",
+        {
+          headers: {
+            Authorization: `Bearer ${user.token}`,
+          },
+        }
+      );
       const json = await response.json();
 
       if (response.ok) {
-        dispatch({ type: 'SET_WORKOUTS', payload: json });
+        dispatch({ type: "SET_WORKOUTS", payload: json });
       }
     };
 

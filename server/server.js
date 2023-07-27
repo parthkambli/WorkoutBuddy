@@ -4,11 +4,18 @@ import express from "express";
 import mongoose from "mongoose";
 import workoutRoutes from "./routes/workout.js";
 import userRoutes from "./routes/user.js";
+import cors from "cors";
 
 //express app
 const app = express();
 
 //middleware
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+
 app.use(express.json());
 
 app.use((req, res, next) => {

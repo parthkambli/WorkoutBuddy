@@ -1,7 +1,7 @@
-import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
-import { useAuthContext } from '../hooks/useAuthContext';
+import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
+import { useAuthContext } from "../hooks/useAuthContext";
 
-import formatDistanceToNow from 'date-fns/formatDistanceToNow';
+import formatDistanceToNow from "date-fns/formatDistanceToNow";
 
 const WorkoutDetails = ({ workout }) => {
   const { dispatch } = useWorkoutsContext();
@@ -11,16 +11,19 @@ const WorkoutDetails = ({ workout }) => {
     if (!user) {
       return;
     }
-    const response = await fetch('/api/workouts/' + workout._id, {
-      method: 'DELETE',
-      headers: {
-        Authorization: `Bearer ${user.token}`,
-      },
-    });
+    const response = await fetch(
+      "https://workoutbuddy-not2.onrender.com/api/workouts/" + workout._id,
+      {
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      }
+    );
     const json = await response.json();
 
     if (response.ok) {
-      dispatch({ type: 'DELETE_WORKOUT', payload: json });
+      dispatch({ type: "DELETE_WORKOUT", payload: json });
     }
   };
 
